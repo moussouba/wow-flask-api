@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
@@ -8,13 +6,12 @@ from flask_jwt_extended import JWTManager, jwt_required, create_access_token, ge
 
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
-from datetime import timedelta
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///wow.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = '$€cR3LK3y__1234'
-app.config['JWT_REFRESH_TOKEN_EXPIRES'] = 300000
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(days=365) # Dangereous 😁
 
 jwt = JWTManager(app)
 
