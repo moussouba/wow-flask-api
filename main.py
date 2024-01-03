@@ -126,8 +126,17 @@ def createTransactions():
     current_user = get_jwt_identity()
 
     sender_id = current_user["id"]
-    receiver_id = data.get('receiver_id')
+
+    receiver_phone = data.get('receiver_phone')
     amount = int(data.get('amount'))
+
+    # verify if receiver exist
+    receiver = User.query.filter_by(phone=receiver_phone).first()
+
+    if receiver is None:
+        return jsonify({"message": "Receiver doesn't exists"}), 400
+
+    receiver_id = receiver.id
 
     # Debit sender balance
     sender_balance = User.query.get(sender_id)
