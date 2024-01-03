@@ -92,8 +92,7 @@ def login():
         payload = {
             'id': user.id,
             'fullname': user.fullname,
-            'phone': user.phone,
-            'currency': DEFAULT_CURRENCY
+            'phone': user.phone
         }
         access_token = create_jwt_token(payload)
         payload['access_token'] = access_token
