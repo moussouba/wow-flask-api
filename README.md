@@ -5,13 +5,17 @@ This API was designed as part of a training project for developing android mobil
 
 # Setup flask server
 **Create virtual env**
+
 ``python3 -m venv flask_venv && source flask_venv/bin/activate``
 
 **Install dependencies**
+
 ``pip3 install -r requirements``
 
 **Start server**
+
 ``python3 main.py``
+
 Server  running on http://localhost:5000
 
 # Endpoints
